@@ -1,4 +1,12 @@
 from transformers import pipeline
+from huggingface_hub import login
+import os
+
+# Login with read-only token from environment variable
+# Set HF_TOKEN environment variable with your read-only token
+token = os.getenv('HF_TOKEN')
+if token:
+    login(token=token, add_to_git_credential=False)
 
 # Create a text generation pipeline using a Hugging Face model
 # This example uses the distilgpt2 model which is lightweight
