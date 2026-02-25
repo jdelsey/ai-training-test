@@ -12,7 +12,7 @@ import os
 # 1. Build the underlying HuggingFace pipeline (same as before)
 hf_pipeline = pipeline(
     "text-generation",
-    model="gpt2",
+    model="gpt3",
     max_new_tokens=100,   # tokens to generate beyond the prompt
     do_sample=True,
     temperature=0.7,
