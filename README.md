@@ -49,6 +49,21 @@ exec(code, namespace)
 
 > **Note:** This is not a full sandbox. The generated code can still `import` modules, make network calls, or read/write files. For untrusted input, use a proper sandbox like `restrictedpython` or a subprocess with resource limits.
 
+### `langchain_search_example.py`
+
+Demonstrates **real-time internet search** using a LangChain ReAct agent equipped with the Tavily search tool. The agent decides when to search the web based on the question, fetches live results, and synthesizes them into a final answer.
+
+Requires two API keys:
+
+- `OPENAI_API_KEY` — [platform.openai.com](https://platform.openai.com)
+- `TAVILY_API_KEY` — [app.tavily.com](https://app.tavily.com) (free tier available)
+
+The agent follows a **Thought → Action → Observation** loop:
+
+1. **Thought** — decides whether the question needs a web search
+2. **Action** — calls the Tavily search tool if needed
+3. **Observation** — reads the results and repeats or answers
+
 ## Setup
 
 See [SETUP.md](SETUP.md) for full instructions on creating a virtual environment, installing dependencies, and setting your Hugging Face token.
@@ -76,4 +91,9 @@ python langchain_hf_example.py
 | `torch` | PyTorch backend for model inference |
 | `huggingface_hub` | Model downloads and authentication |
 | `langchain` | LLM chaining and orchestration framework |
+| `langchain-core` | Core LangChain primitives (prompts, output parsers) |
 | `langchain-huggingface` | LangChain adapter for Hugging Face pipelines |
+| `langchain-openai` | LangChain adapter for OpenAI models |
+| `langchain-tavily` | LangChain adapter for Tavily web search |
+| `langgraph` | ReAct agent and graph-based orchestration |
+| `openai` | OpenAI Python SDK |
